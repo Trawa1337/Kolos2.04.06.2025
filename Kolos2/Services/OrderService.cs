@@ -21,7 +21,7 @@ public class OrderService: IOrderService
             return null;
         }
         
-            var order = await _context.Purchased_Tickets.Select(e => new OrderDto()
+            var order = await _context.Purchased_Tickets.Where(e=>e.Customer.CustomerId==id).Select(e => new OrderDto()
             {
                 FirstName = e.Customer.FirstName,
                 LastName = e.Customer.LastName,
