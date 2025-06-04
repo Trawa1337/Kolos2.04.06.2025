@@ -17,6 +17,10 @@ public class CustomersController: ControllerBase
     public async Task<IActionResult> GetPurchase(int id)
     {
         var orders = await _orderService.GetOrders(id);
+        if (orders == null)
+        {
+            return NotFound();
+        }
             return Ok(orders);
     }
 }
